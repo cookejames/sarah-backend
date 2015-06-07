@@ -1,0 +1,79 @@
+{
+  "name": "heatingSchedule",
+  "base": "PersistedModel",
+  "strict": true,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "http": {
+    "path": "heating/schedule"
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "index": true
+    },
+    "groupId": {
+      "type": "string",
+      "required": true
+    },
+    "heatingOn": {
+      "type": "boolean",
+      "required": true
+    },
+    "waterOn": {
+      "type": "boolean",
+      "required": true
+    },
+    "start": {
+      "type": "number",
+      "required": true,
+      "comments": "start time in minutes"
+    },
+    "end": {
+      "type": "number",
+      "required": true,
+      "comments": "end time in minutes"
+    },
+    "monday": {
+      "type": "boolean",
+      "required": true
+    },
+    "tuesday": {
+      "type": "boolean",
+      "required": true
+    },
+    "wednesday": {
+      "type": "boolean",
+      "required": true
+    },
+    "thursday": {
+      "type": "boolean",
+      "required": true
+    },
+    "friday": {
+      "type": "boolean",
+      "required": true
+    },
+    "saturday": {
+      "type": "boolean",
+      "required": true
+    },
+    "sunday": {
+      "type": "boolean",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "group": {
+      "type": "belongsTo",
+      "model": "heatingGroup",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}
