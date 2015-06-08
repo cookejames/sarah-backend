@@ -40,44 +40,244 @@ module.factory(
       { 'id': '@id' },
       {
 
-        // INTERNAL. Use HeatingGroup.schedules.findById() instead.
+        /**
+         * @ngdoc method
+         * @name lbServices.HeatingGroup#prototype$__findById__schedules
+         * @methodOf lbServices.HeatingGroup
+         *
+         * @description
+         *
+         * Find a related item by id for schedules.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for schedules
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `HeatingGroup` object.)
+         * </em>
+         */
         "prototype$__findById__schedules": {
           url: urlBase + "/heating/group/:id/schedules/:fk",
           method: "GET"
         },
 
-        // INTERNAL. Use HeatingGroup.schedules.destroyById() instead.
+        /**
+         * @ngdoc method
+         * @name lbServices.HeatingGroup#prototype$__destroyById__schedules
+         * @methodOf lbServices.HeatingGroup
+         *
+         * @description
+         *
+         * Delete a related item by id for schedules.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for schedules
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
         "prototype$__destroyById__schedules": {
           url: urlBase + "/heating/group/:id/schedules/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use HeatingGroup.schedules.updateById() instead.
+        /**
+         * @ngdoc method
+         * @name lbServices.HeatingGroup#prototype$__updateById__schedules
+         * @methodOf lbServices.HeatingGroup
+         *
+         * @description
+         *
+         * Update a related item by id for schedules.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for schedules
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `HeatingGroup` object.)
+         * </em>
+         */
         "prototype$__updateById__schedules": {
           url: urlBase + "/heating/group/:id/schedules/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use HeatingGroup.schedules() instead.
+        /**
+         * @ngdoc method
+         * @name lbServices.HeatingGroup#prototype$__get__schedules
+         * @methodOf lbServices.HeatingGroup
+         *
+         * @description
+         *
+         * Queries schedules of heatingGroup.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `filter` – `{object=}` - 
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `HeatingGroup` object.)
+         * </em>
+         */
         "prototype$__get__schedules": {
           isArray: true,
           url: urlBase + "/heating/group/:id/schedules",
           method: "GET"
         },
 
-        // INTERNAL. Use HeatingGroup.schedules.create() instead.
+        /**
+         * @ngdoc method
+         * @name lbServices.HeatingGroup#prototype$__create__schedules
+         * @methodOf lbServices.HeatingGroup
+         *
+         * @description
+         *
+         * Creates a new instance in schedules of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `HeatingGroup` object.)
+         * </em>
+         */
         "prototype$__create__schedules": {
           url: urlBase + "/heating/group/:id/schedules",
           method: "POST"
         },
 
-        // INTERNAL. Use HeatingGroup.schedules.destroyAll() instead.
+        /**
+         * @ngdoc method
+         * @name lbServices.HeatingGroup#prototype$__delete__schedules
+         * @methodOf lbServices.HeatingGroup
+         *
+         * @description
+         *
+         * Deletes all schedules of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
         "prototype$__delete__schedules": {
           url: urlBase + "/heating/group/:id/schedules",
           method: "DELETE"
         },
 
-        // INTERNAL. Use HeatingGroup.schedules.count() instead.
+        /**
+         * @ngdoc method
+         * @name lbServices.HeatingGroup#prototype$__count__schedules
+         * @methodOf lbServices.HeatingGroup
+         *
+         * @description
+         *
+         * Counts schedules of heatingGroup.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `count` – `{number=}` - 
+         */
         "prototype$__count__schedules": {
           url: urlBase + "/heating/group/:id/schedules/count",
           method: "GET"
@@ -425,12 +625,6 @@ module.factory(
           url: urlBase + "/heating/group/:id",
           method: "PUT"
         },
-
-        // INTERNAL. Use HeatingSchedule.group() instead.
-        "::get::heatingSchedule::group": {
-          url: urlBase + "/heating/schedule/:id/group",
-          method: "GET"
-        },
       }
     );
 
@@ -567,861 +761,6 @@ module.factory(
     */
     R.modelName = "HeatingGroup";
 
-    /**
-     * @ngdoc object
-     * @name lbServices.HeatingGroup.schedules
-     * @header lbServices.HeatingGroup.schedules
-     * @object
-     * @description
-     *
-     * The object `HeatingGroup.schedules` groups methods
-     * manipulating `HeatingSchedule` instances related to `HeatingGroup`.
-     *
-     * Call {@link lbServices.HeatingGroup#schedules HeatingGroup.schedules()}
-     * to query all related instances.
-     */
-
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingGroup#schedules
-         * @methodOf lbServices.HeatingGroup
-         *
-         * @description
-         *
-         * Queries schedules of heatingGroup.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         *  - `filter` – `{object=}` - 
-         *
-         * @param {function(Array.<Object>,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Array.<Object>} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `HeatingSchedule` object.)
-         * </em>
-         */
-        R.schedules = function() {
-          var TargetResource = $injector.get("HeatingSchedule");
-          var action = TargetResource["::get::heatingGroup::schedules"];
-          return action.apply(R, arguments);
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingGroup.schedules#count
-         * @methodOf lbServices.HeatingGroup.schedules
-         *
-         * @description
-         *
-         * Counts schedules of heatingGroup.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `count` – `{number=}` - 
-         */
-        R.schedules.count = function() {
-          var TargetResource = $injector.get("HeatingSchedule");
-          var action = TargetResource["::count::heatingGroup::schedules"];
-          return action.apply(R, arguments);
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingGroup.schedules#create
-         * @methodOf lbServices.HeatingGroup.schedules
-         *
-         * @description
-         *
-         * Creates a new instance in schedules of this model.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `HeatingSchedule` object.)
-         * </em>
-         */
-        R.schedules.create = function() {
-          var TargetResource = $injector.get("HeatingSchedule");
-          var action = TargetResource["::create::heatingGroup::schedules"];
-          return action.apply(R, arguments);
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingGroup.schedules#destroyAll
-         * @methodOf lbServices.HeatingGroup.schedules
-         *
-         * @description
-         *
-         * Deletes all schedules of this model.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        R.schedules.destroyAll = function() {
-          var TargetResource = $injector.get("HeatingSchedule");
-          var action = TargetResource["::delete::heatingGroup::schedules"];
-          return action.apply(R, arguments);
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingGroup.schedules#destroyById
-         * @methodOf lbServices.HeatingGroup.schedules
-         *
-         * @description
-         *
-         * Delete a related item by id for schedules.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         *  - `fk` – `{*}` - Foreign key for schedules
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        R.schedules.destroyById = function() {
-          var TargetResource = $injector.get("HeatingSchedule");
-          var action = TargetResource["::destroyById::heatingGroup::schedules"];
-          return action.apply(R, arguments);
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingGroup.schedules#findById
-         * @methodOf lbServices.HeatingGroup.schedules
-         *
-         * @description
-         *
-         * Find a related item by id for schedules.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         *  - `fk` – `{*}` - Foreign key for schedules
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `HeatingSchedule` object.)
-         * </em>
-         */
-        R.schedules.findById = function() {
-          var TargetResource = $injector.get("HeatingSchedule");
-          var action = TargetResource["::findById::heatingGroup::schedules"];
-          return action.apply(R, arguments);
-        };
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingGroup.schedules#updateById
-         * @methodOf lbServices.HeatingGroup.schedules
-         *
-         * @description
-         *
-         * Update a related item by id for schedules.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         *  - `fk` – `{*}` - Foreign key for schedules
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `HeatingSchedule` object.)
-         * </em>
-         */
-        R.schedules.updateById = function() {
-          var TargetResource = $injector.get("HeatingSchedule");
-          var action = TargetResource["::updateById::heatingGroup::schedules"];
-          return action.apply(R, arguments);
-        };
-
-    return R;
-  }]);
-
-/**
- * @ngdoc object
- * @name lbServices.HeatingSchedule
- * @header lbServices.HeatingSchedule
- * @object
- *
- * @description
- *
- * A $resource object for interacting with the `HeatingSchedule` model.
- *
- * ## Example
- *
- * See
- * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
- * for an example of using this object.
- *
- */
-module.factory(
-  "HeatingSchedule",
-  ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
-    var R = Resource(
-      urlBase + "/heating/schedule/:id",
-      { 'id': '@id' },
-      {
-
-        // INTERNAL. Use HeatingSchedule.group() instead.
-        "prototype$__get__group": {
-          url: urlBase + "/heating/schedule/:id/group",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingSchedule#create
-         * @methodOf lbServices.HeatingSchedule
-         *
-         * @description
-         *
-         * Create a new instance of the model and persist it into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `HeatingSchedule` object.)
-         * </em>
-         */
-        "create": {
-          url: urlBase + "/heating/schedule",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingSchedule#upsert
-         * @methodOf lbServices.HeatingSchedule
-         *
-         * @description
-         *
-         * Update an existing model instance or insert a new one into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `HeatingSchedule` object.)
-         * </em>
-         */
-        "upsert": {
-          url: urlBase + "/heating/schedule",
-          method: "PUT"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingSchedule#exists
-         * @methodOf lbServices.HeatingSchedule
-         *
-         * @description
-         *
-         * Check whether a model instance exists in the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `exists` – `{boolean=}` - 
-         */
-        "exists": {
-          url: urlBase + "/heating/schedule/:id/exists",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingSchedule#findById
-         * @methodOf lbServices.HeatingSchedule
-         *
-         * @description
-         *
-         * Find a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         *  - `filter` – `{object=}` - Filter defining fields and include
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `HeatingSchedule` object.)
-         * </em>
-         */
-        "findById": {
-          url: urlBase + "/heating/schedule/:id",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingSchedule#find
-         * @methodOf lbServices.HeatingSchedule
-         *
-         * @description
-         *
-         * Find all instances of the model matched by filter from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
-         *
-         * @param {function(Array.<Object>,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Array.<Object>} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `HeatingSchedule` object.)
-         * </em>
-         */
-        "find": {
-          isArray: true,
-          url: urlBase + "/heating/schedule",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingSchedule#findOne
-         * @methodOf lbServices.HeatingSchedule
-         *
-         * @description
-         *
-         * Find first instance of the model matched by filter from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `HeatingSchedule` object.)
-         * </em>
-         */
-        "findOne": {
-          url: urlBase + "/heating/schedule/findOne",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingSchedule#updateAll
-         * @methodOf lbServices.HeatingSchedule
-         *
-         * @description
-         *
-         * Update instances of the model matched by where from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        "updateAll": {
-          url: urlBase + "/heating/schedule/update",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingSchedule#deleteById
-         * @methodOf lbServices.HeatingSchedule
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        "deleteById": {
-          url: urlBase + "/heating/schedule/:id",
-          method: "DELETE"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingSchedule#count
-         * @methodOf lbServices.HeatingSchedule
-         *
-         * @description
-         *
-         * Count instances of the model matched by where from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `count` – `{number=}` - 
-         */
-        "count": {
-          url: urlBase + "/heating/schedule/count",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingSchedule#prototype$updateAttributes
-         * @methodOf lbServices.HeatingSchedule
-         *
-         * @description
-         *
-         * Update attributes for a model instance and persist it into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `HeatingSchedule` object.)
-         * </em>
-         */
-        "prototype$updateAttributes": {
-          url: urlBase + "/heating/schedule/:id",
-          method: "PUT"
-        },
-
-        // INTERNAL. Use HeatingGroup.schedules.findById() instead.
-        "::findById::heatingGroup::schedules": {
-          url: urlBase + "/heating/group/:id/schedules/:fk",
-          method: "GET"
-        },
-
-        // INTERNAL. Use HeatingGroup.schedules.destroyById() instead.
-        "::destroyById::heatingGroup::schedules": {
-          url: urlBase + "/heating/group/:id/schedules/:fk",
-          method: "DELETE"
-        },
-
-        // INTERNAL. Use HeatingGroup.schedules.updateById() instead.
-        "::updateById::heatingGroup::schedules": {
-          url: urlBase + "/heating/group/:id/schedules/:fk",
-          method: "PUT"
-        },
-
-        // INTERNAL. Use HeatingGroup.schedules() instead.
-        "::get::heatingGroup::schedules": {
-          isArray: true,
-          url: urlBase + "/heating/group/:id/schedules",
-          method: "GET"
-        },
-
-        // INTERNAL. Use HeatingGroup.schedules.create() instead.
-        "::create::heatingGroup::schedules": {
-          url: urlBase + "/heating/group/:id/schedules",
-          method: "POST"
-        },
-
-        // INTERNAL. Use HeatingGroup.schedules.destroyAll() instead.
-        "::delete::heatingGroup::schedules": {
-          url: urlBase + "/heating/group/:id/schedules",
-          method: "DELETE"
-        },
-
-        // INTERNAL. Use HeatingGroup.schedules.count() instead.
-        "::count::heatingGroup::schedules": {
-          url: urlBase + "/heating/group/:id/schedules/count",
-          method: "GET"
-        },
-      }
-    );
-
-
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingSchedule#updateOrCreate
-         * @methodOf lbServices.HeatingSchedule
-         *
-         * @description
-         *
-         * Update an existing model instance or insert a new one into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `HeatingSchedule` object.)
-         * </em>
-         */
-        R["updateOrCreate"] = R["upsert"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingSchedule#update
-         * @methodOf lbServices.HeatingSchedule
-         *
-         * @description
-         *
-         * Update instances of the model matched by where from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        R["update"] = R["updateAll"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingSchedule#destroyById
-         * @methodOf lbServices.HeatingSchedule
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        R["destroyById"] = R["deleteById"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingSchedule#removeById
-         * @methodOf lbServices.HeatingSchedule
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        R["removeById"] = R["deleteById"];
-
-
-    /**
-    * @ngdoc property
-    * @name lbServices.HeatingSchedule#modelName
-    * @propertyOf lbServices.HeatingSchedule
-    * @description
-    * The name of the model represented by this $resource,
-    * i.e. `HeatingSchedule`.
-    */
-    R.modelName = "HeatingSchedule";
-
-
-        /**
-         * @ngdoc method
-         * @name lbServices.HeatingSchedule#group
-         * @methodOf lbServices.HeatingSchedule
-         *
-         * @description
-         *
-         * Fetches belongsTo relation group.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         *  - `refresh` – `{boolean=}` - 
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `HeatingGroup` object.)
-         * </em>
-         */
-        R.group = function() {
-          var TargetResource = $injector.get("HeatingGroup");
-          var action = TargetResource["::get::heatingSchedule::group"];
-          return action.apply(R, arguments);
-        };
 
     return R;
   }]);

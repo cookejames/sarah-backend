@@ -10,15 +10,6 @@
     "path": "heating/schedule"
   },
   "properties": {
-    "id": {
-      "type": "string",
-      "id": true,
-      "index": true
-    },
-    "groupId": {
-      "type": "string",
-      "required": true
-    },
     "heatingOn": {
       "type": "boolean",
       "required": true
