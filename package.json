@@ -16,7 +16,10 @@
     "loopback-datasource-juggler": "^2.19.0",
     "strong-express-metrics": "^1.1.0",
     "serve-favicon": "^2.0.1",
-    "loopback-connector-mongodb": "~1.10.1"
+    "loopback-connector-mongodb": "~1.10.1",
+    "strong-pubsub": "~0.2.0",
+    "strong-pubsub-mqtt": "~0.1.0",
+    "promise": "~7.0.1"
   },
   "optionalDependencies": {
     "loopback-explorer": "^1.1.0"
