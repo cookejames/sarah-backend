@@ -34,5 +34,13 @@
   "heatingSchedule": {
     "dataSource": "db",
     "public": false
+  },
+  "boost": {
+    "dataSource": "db",
+    "public": true
+  },
+  "users": {
+    "dataSource": "db",
+    "public": true
   }
 }

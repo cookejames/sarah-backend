@@ -1,0 +1,28 @@
+{
+  "name": "boost",
+  "plural": "boost",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "heating": {
+      "type": "boolean",
+      "required": true
+    },
+    "water": {
+      "type": "boolean",
+      "required": true
+    },
+    "endTime": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
