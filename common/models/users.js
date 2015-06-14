@@ -5,11 +5,7 @@ module.exports = function(Users) {
         email: username,
         password: password
       },
-      function(err, data){
-        console.log(err);
-        console.log(data);
-        cb(err, data);
-      });
+      cb);
   };
   Users.remoteMethod(
     'mosquittoLogin',
@@ -28,7 +24,13 @@ module.exports = function(Users) {
 
   //acl
   Users.mosquittoAcl = function mosquitto(username, password, cb) {
-    cb(null, 'not implemented');
+    switch (username) {
+      case 'anonymous':
+          return cb({name: 'Not authorised', status: 403, message: 'Access not authorised'});
+      default:
+          return cb(null, 'Authorised');
+    }
+
   };
   Users.remoteMethod(
     'mosquittoAcl',
@@ -47,7 +49,7 @@ module.exports = function(Users) {
 
   //superuser
   Users.mosquittoSuperuser = function mosquitto(username, password, cb) {
-    cb(null, 'not implemented');
+    cb({name: 'Not authorised', status: 403, message: 'Access not authorised'});
   };
   Users.remoteMethod(
     'mosquittoSuperuser',
