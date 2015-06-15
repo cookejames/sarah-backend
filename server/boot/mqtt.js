@@ -3,11 +3,11 @@
  * @param server
  */
 module.exports = function(server) {
-  var Client = require('strong-pubsub');
-  var Adapter = require('strong-pubsub-mqtt');
+  var Adapter = require('strong-pubsub');
+  var Client = require('strong-pubsub-mqtt');
   global.Promise = require('promise');
 
-  var mqtt = new Client({host: 'localhost', port: 1883 }, Adapter);
+  var mqtt = new Adapter(server.get('mqtt'), Client);
   mqtt.subscribe('heating/schedule/request');
   mqtt.subscribe('water/schedule/request');
   mqtt.on('message', messageReceived);
