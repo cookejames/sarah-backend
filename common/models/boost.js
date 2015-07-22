@@ -13,6 +13,42 @@ module.exports = function(Boost) {
   Boost.disableRemoteMethod('create', true);
   Boost.disableRemoteMethod('updateAll', true);
 
+  /**
+   * Get the current boost status for heating and water
+   */
+  Boost.remoteMethod('status', {
+    description: 'Get the boost status',
+    accepts: [],
+    returns: [
+      {arg: 'heating', type: 'number', root: true},
+      {arg: 'water', type: 'number', root: true}
+    ],
+    http: {verb: 'get', path: '/status'}
+  });
+  Boost.status = function(cb) {
+    this.find({
+      where: {
+        endTime: {gt: new Date().getTime()}
+      }
+    }, function(err, results) {
+      if (err) {
+        return cb(err);
+      }
+
+      var currentTime = new Date().getTime();
+      var waterTime = currentTime;
+      var heatingTime = currentTime;
+
+      results.forEach(function(result){
+        waterTime = (result.water && result.endTime > waterTime) ? result.endTime : waterTime;
+        heatingTime = (result.heating && result.endTime > heatingTime) ? result.endTime : heatingTime;
+      });
+      cb(null, { //return the boost time in millis from the current time
+        water: waterTime - currentTime,
+        heating: heatingTime - currentTime
+      });
+    });
+  };
 
   Boost.remoteMethod('boostWater', {
     description: 'Boost the water for a number of minutes',
