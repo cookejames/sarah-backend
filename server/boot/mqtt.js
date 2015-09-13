@@ -79,26 +79,57 @@ module.exports = function(server) {
 
       var collection =  server.models.heatingGroup.dataSource.connector.collection('heatingGroup');
       collection.find(query).toArray(function(err, data){
-        var status = (data.length > 0) ? 'on' : 'off';
+        var status = (data.length > 0) ? true : false;
         resolve(status);
       });
     });
   }
 
   /**
-   * Publish if there are any heating schedules enabled
+   * Is a boost enabled
+   * @param type heating or water
+   * @returns {Promise}
+   */
+  function isBoostOn(type) {
+    return new Promise(function(resolve, reject){
+      var time = new Date().getTime();
+      var query = {
+        endTime:{
+          $gt: time
+        }
+      };
+      query[type] = true;
+
+      var collection =  server.models.boost.dataSource.connector.collection('boost');
+      collection.find(query).toArray(function(err, data){
+        var status = (data.length > 0) ? true : false;
+        resolve(status);
+      });
+    });
+  }
+
+  /**
+   * Publish if there are any heating schedules or boost enabled
    */
   function heatingScheduleRequested() {
-    isScheduleOn('heating').then(function(status){
+    Promise.all([
+      isScheduleOn('heating'),
+      isBoostOn('heating')
+    ]).then(function(results){
+      var status = (results[0] || results[1]) ? 'on' : 'off';
       mqtt.publish('heating/schedule', status);
     });
   }
 
   /**
-   * Publish if there are any water schedules enabled
+   * Publish if there are any water schedules or boost enabled
    */
   function waterScheduleRequested() {
-    isScheduleOn('water').then(function(status){
+    Promise.all([
+      isScheduleOn('water'),
+      isBoostOn('water')
+    ]).then(function(results){
+      var status = (results[0] || results[1]) ? 'on' : 'off';
       mqtt.publish('water/schedule', status);
     });
   }
