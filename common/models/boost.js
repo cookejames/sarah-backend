@@ -74,6 +74,36 @@ module.exports = function(Boost) {
     create(false, true, data, cb);
   };
 
+  Boost.remoteMethod('cancelHeating', {
+    description: 'Cancel all current heating boosts',
+    accepts: [],
+    returns: {arg: 'data', type: this.modelName, root: true},
+    http: {verb: 'delete', path: '/heating/cancel'}
+  });
+  Boost.cancelHeating = function(cb) {
+    Boost.destroyAll({
+      heating: true,
+      endTime: {
+        gt: new Date().getTime()
+      }
+    }, cb);
+  };
+
+  Boost.remoteMethod('cancelWater', {
+    description: 'Cancel all current water boosts',
+    accepts: [],
+    returns: {arg: 'data', type: this.modelName, root: true},
+    http: {verb: 'delete', path: '/water/cancel'}
+  });
+  Boost.cancelHeating = function(cb) {
+    Boost.destroyAll({
+      water: true,
+      endTime: {
+        gt: new Date().getTime()
+      }
+    }, cb);
+  };
+
   function create(water, heating, time, cb) {
     time = parseInt(time);
     if (time === undefined || time < 0 || time > 180) {
