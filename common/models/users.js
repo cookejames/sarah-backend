@@ -1,11 +1,33 @@
 module.exports = function(Users) {
   //login
   Users.mosquittoLogin = function mosquitto(username, password, cb) {
-    this.login({
+    var hex24bit = new RegExp('[0-9a-f]{24}');
+    if (hex24bit.test(username) && password.indexOf('Bearer ') === 0) {
+      var token = password.slice(7);
+      Users.dataSource.models.AccessToken.find(
+        {
+          where: {
+            id: token,
+            userId: username
+          }
+        },
+        function(err, data) {
+          if (err) {
+            cb(err);
+          } else if (data.length === 0 || data[0].created.getTime() + data[0].ttl > new Date().getTime) {
+            cb({name: 'Not Found', status: 404, message: 'Entity not found'});
+          } else {
+            cb(err, data[0]);
+          }
+        }
+      );
+    } else {
+      this.login({
         email: username,
         password: password
-      },
-      cb);
+      },cb);
+    }
+
   };
   Users.remoteMethod(
     'mosquittoLogin',
@@ -18,7 +40,7 @@ module.exports = function(Users) {
         {arg: 'username', type: 'string'},
         {arg: 'password', type: 'string'}
       ],
-      returns: {arg: 'response', type: 'string'}
+      returns: {arg: 'data', type: 'AccessToken', root: true}
     }
   );
 
@@ -28,7 +50,13 @@ module.exports = function(Users) {
       case 'anonymous':
           return cb({name: 'Not authorised', status: 403, message: 'Access not authorised'});
       default:
-          return cb(null, 'Authorised');
+          return Users.mosquittoLogin(username, password, function(err){
+            if (err) {
+              cb(err);
+            } else {
+              cb(null, 'Authorised');
+            }
+          });
     }
 
   };
