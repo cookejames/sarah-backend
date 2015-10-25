@@ -95,7 +95,7 @@ module.exports = function(Boost) {
     returns: {arg: 'data', type: this.modelName, root: true},
     http: {verb: 'delete', path: '/water/cancel'}
   });
-  Boost.cancelHeating = function(cb) {
+  Boost.cancelWater = function(cb) {
     Boost.destroyAll({
       water: true,
       endTime: {
