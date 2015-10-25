@@ -50,7 +50,7 @@ module.exports = function(Users) {
       case 'anonymous':
           return cb({name: 'Not authorised', status: 403, message: 'Access not authorised'});
       default:
-          return Users.mosquittoLogin(username, password, function(err){
+          return Users.find({email: username}, function(err){
             if (err) {
               cb(err);
             } else {
