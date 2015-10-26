@@ -22,7 +22,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "creator": {
+      "type": "hasOne",
+      "model": "user",
+      "foreignKey": "creatorId"
+    }
+  },
   "acls": [
     {
       "accessType": "*",

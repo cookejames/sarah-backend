@@ -13,6 +13,13 @@ module.exports = function(Boost) {
   Boost.disableRemoteMethod('create', true);
   Boost.disableRemoteMethod('updateAll', true);
 
+  Boost.observe('before save', function(ctx, next){
+    if (ctx.isNewInstance) {
+      var accessToken = require('loopback').getCurrentContext().get('accessToken');
+      ctx.instance.userId = accessToken.userId;
+    }
+    next();
+  });
   /**
    * Get the current boost status for heating and water
    */
