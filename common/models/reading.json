@@ -1,40 +1,29 @@
 {
-  "name": "heatingGroup",
+  "name": "reading",
   "base": "PersistedModel",
   "strict": true,
   "idInjection": false,
   "options": {
     "validateUpsert": true
   },
-  "http": {
-    "path": "heating/group"
-  },
   "properties": {
-    "id": {
-      "type": "string",
-      "id": true,
+    "time": {
+      "type": "number",
+      "required": true,
       "index": true
     },
-    "name": {
-      "type": "string",
-      "required": true
-    },
-    "isEnabled": {
-      "type": "boolean"
-    },
-    "holidayFrom": {
+    "numberValue": {
       "type": "number"
     },
-    "holidayTo": {
-      "type": "number"
+    "stringValue": {
+      "type": "string"
     }
   },
   "validations": [],
   "relations": {
-    "schedules": {
-      "type": "embedsMany",
-      "model": "heatingSchedule",
-      "foreignKey": "groupId"
+    "sensor": {
+      "type": "belongsTo",
+      "model": "sensor"
     }
   },
   "acls": [

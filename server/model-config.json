@@ -42,5 +42,13 @@
   "users": {
     "dataSource": "db",
     "public": true
+  },
+  "sensor": {
+    "dataSource": "db",
+    "public": true
+  },
+  "reading": {
+    "dataSource": "db",
+    "public": true
   }
 }
