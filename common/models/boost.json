@@ -16,6 +16,10 @@
       "type": "boolean",
       "required": true
     },
+    "startTime": {
+      "type": "number",
+      "required": true
+    },
     "endTime": {
       "type": "number",
       "required": true

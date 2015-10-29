@@ -116,10 +116,12 @@ module.exports = function(Boost) {
     if (time === undefined || time < 0 || time > 180) {
       return cb({name: 'Invalid time', status: 400, message: 'Validation error'});
     }
+    var currentTime = new Date().getTime();
     Boost.create({
       water: (water == true),
       heating: (heating == true),
-      endTime: new Date().getTime() + (time * 60 * 1000)
+      startTime: currentTime,
+      endTime: currentTime + (time * 60 * 1000)
     }, cb);
   }
 };
