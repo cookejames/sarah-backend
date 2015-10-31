@@ -9,8 +9,7 @@
   "properties": {
     "time": {
       "type": "number",
-      "required": true,
-      "index": true
+      "required": true
     },
     "numberValue": {
       "type": "number"
@@ -34,5 +33,17 @@
       "permission": "DENY"
     }
   ],
-  "methods": []
+  "methods": [],
+  "indexes": {
+    "time_index": {
+      "keys": {
+        "time": 1
+      }
+    },
+    "sensorId_index": {
+      "keys": {
+        "sensorId": 1
+      }
+    }
+  }
 }

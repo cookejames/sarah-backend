@@ -76,8 +76,20 @@ module.exports = function(server) {
 
       var collection =  server.models.heatingGroup.dataSource.connector.collection('heatingGroup');
       collection.find(query).toArray(function(err, data){
-        var status = (data.length > 0) ? true : false;
-        resolve(status);
+        if (Array.isArray(data)) {
+          //Filter out groups that are in holiday times
+          var now = new Date().getTime();
+          data = data.filter(function(group){
+            if (!group.holidayFrom || !group.holidayTo) {
+              return true;
+            }
+            return !(now > group.holidayFrom && now < group.holidayTo);
+          });
+          var status = (data.length > 0) ? true : false;
+          resolve(status);
+        } else {
+          reject();
+        }
       });
     });
   }
