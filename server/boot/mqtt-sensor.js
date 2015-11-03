@@ -23,15 +23,19 @@ module.exports = function(server) {
     }
     var sensorId = matches[1];
     sensorModel.findById(sensorId, function(err, sensor){
-      if (err) return;
+      if (err || !sensor) return;
 
       var reading = {
         time: new Date().getTime()
       };
       switch (sensor.type) {
         case 'temperature':
-        case 'humidity':
+        case 'humidity': //TODO remove
+        case 'float':
           reading.numberValue = parseFloat(message);
+          break;
+        case 'boolean':
+          reading.booleanValue = parseInt(message);
           break;
         default:
           reading.stringValue = message;

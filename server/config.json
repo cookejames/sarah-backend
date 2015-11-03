@@ -31,5 +31,8 @@
       "username": "",
       "password": ""
     }
+  },
+  "sensors": {
+    "heatingId": ""
   }
 }

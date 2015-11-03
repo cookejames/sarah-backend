@@ -16,6 +16,9 @@
     },
     "stringValue": {
       "type": "string"
+    },
+    "booleanValue": {
+      "type": "boolean"
     }
   },
   "validations": [],
