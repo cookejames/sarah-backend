@@ -50,5 +50,9 @@
   "reading": {
     "dataSource": "db",
     "public": true
+  },
+  "switch": {
+    "dataSource": "db",
+    "public": true
   }
 }
