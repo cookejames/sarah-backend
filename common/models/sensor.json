@@ -16,7 +16,24 @@
       "required": true
     },
     "isEnabled": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": true
+    },
+    "triggersHeating": {
+      "type": "boolean",
+      "default": false
+    },
+    "triggerValue": {
+      "type": "number"
+    },
+    "triggerTimeFrom": {
+      "type": "number"
+    },
+    "triggerTimeTo": {
+      "type": "number"
+    },
+    "triggerBoostLength": {
+      "type": "number"
     }
   },
   "validations": [],

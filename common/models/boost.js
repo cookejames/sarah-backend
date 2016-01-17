@@ -16,7 +16,7 @@ module.exports = function(Boost) {
   Boost.observe('before save', function(ctx, next){
     if (ctx.isNewInstance) {
       var accessToken = require('loopback').getCurrentContext().get('accessToken');
-      ctx.instance.userId = accessToken.userId;
+      ctx.instance.userId = accessToken ? accessToken.userId : null;
     }
     next();
   });
