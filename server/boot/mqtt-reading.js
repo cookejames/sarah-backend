@@ -10,7 +10,7 @@ module.exports = function(server) {
   var mqtt = require('../lib/mqtt').mqtt(server.get('mqtt'));
 
 
-  client.on('connect', function () {
+  mqtt.on('connect', function () {
     mqtt.subscribe('sensors/+/readings');
   });
   mqtt.on('message', messageReceived);
