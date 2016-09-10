@@ -9,7 +9,10 @@ module.exports = function(server) {
   var boostModel = server.models.boost;
   var mqtt = require('../lib/mqtt').mqtt(server.get('mqtt'));
 
-  mqtt.subscribe('sensors/+/readings');
+
+  client.on('connect', function () {
+    mqtt.subscribe('sensors/+/readings');
+  });
   mqtt.on('message', messageReceived);
 
   /**

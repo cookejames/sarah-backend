@@ -6,7 +6,9 @@ module.exports = function(server) {
   global.Promise = global.Promise || require('promise');
 
   var mqtt = require('../lib/mqtt').mqtt(server.get('mqtt'));
-  mqtt.subscribe('+/schedule/request');
+  client.on('connect', function () {
+    mqtt.subscribe('+/schedule/request');
+  });
   mqtt.on('message', messageReceived);
 
   /**
