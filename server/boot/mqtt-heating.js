@@ -1,30 +1,47 @@
+global.Promise = global.Promise || require('promise');
 /**
  * Provides responses to MQTT messages
- * @param server
+ * @param app
  */
-module.exports = function(server) {
-  global.Promise = global.Promise || require('promise');
+module.exports = function(app) {
+  var mqtt = require('../lib/mqtt').mqtt(app.get('mqtt'));
+  var currentHeatingState = null;
+  var currentWaterState = null;
 
-  var mqtt = require('../lib/mqtt').mqtt(server.get('mqtt'));
-  mqtt.on('connect', function () {
-    mqtt.subscribe('+/schedule/request');
+  mqtt.on('connect', function(){
+    resetCurrentState(); //reset the current state in case a new broker has come up
+    sendBoilerState();
   });
-  mqtt.on('message', messageReceived);
+  app.models.HeatingSchedule.observe('after save', function(ctx, next){
+    sendBoilerState();
+    next();
+  });
+  app.models.HeatingGroup.observe('after save', function(ctx, next){
+    sendBoilerState();
+    next();
+  });
+  app.models.Boost.observe('after save', function(ctx, next){
+    sendBoilerState();
+    next();
+  });
+  setInterval(sendBoilerState, 60000);
 
   /**
-   * Handle MQTT subscriptions
-   * @param topic
-   * @param message
+   * Resets the stored boiler state
    */
-  function messageReceived(topic, message) {
-    switch (topic) {
-      case 'heating/schedule/request':
-        heatingScheduleRequested();
-        break;
-      case 'water/schedule/request':
-        waterScheduleRequested();
-        break;
+  function resetCurrentState() {
+    currentHeatingState = null;
+    currentWaterState= null;
+  }
+  /**
+   * Publish the current heating and water state over MQTT
+   */
+  function sendBoilerState() {
+    if (!mqtt.connected) {
+      return;
     }
+    sendHeatingState();
+    sendWaterState();
   }
 
   /**
@@ -76,7 +93,7 @@ module.exports = function(server) {
       query.heatingSchedules.$elemMatch[type + 'On'] = true;
       query.heatingSchedules.$elemMatch[getDayOfWeek()] = true;
 
-      var collection =  server.models.heatingGroup.dataSource.connector.collection('heatingGroup');
+      var collection =  app.models.heatingGroup.dataSource.connector.collection('heatingGroup');
       collection.find(query).toArray(function(err, data){
         if (Array.isArray(data)) {
           //Filter out groups that are in holiday times
@@ -111,7 +128,7 @@ module.exports = function(server) {
       };
       query[type] = true;
 
-      var collection =  server.models.boost.dataSource.connector.collection('boost');
+      var collection =  app.models.boost.dataSource.connector.collection('boost');
       collection.find(query).toArray(function(err, data){
         var status = (data.length > 0) ? true : false;
         resolve(status);
@@ -122,26 +139,32 @@ module.exports = function(server) {
   /**
    * Publish if there are any heating schedules or boost enabled
    */
-  function heatingScheduleRequested() {
+  function sendHeatingState() {
     Promise.all([
       isScheduleOn('heating'),
       isBoostOn('heating')
     ]).then(function(results){
-      var status = (results[0] || results[1]) ? 'on' : 'off';
-      mqtt.publish('heating/schedule', status);
+      var status = (results[0] || results[1]) ? '1' : '0';
+      if (status !== currentHeatingState) {
+        mqtt.publish('hvac/boiler/heating/control/set', status, {retain: true});
+        currentHeatingState = status;
+      }
     });
   }
 
   /**
    * Publish if there are any water schedules or boost enabled
    */
-  function waterScheduleRequested() {
+  function sendWaterState() {
     Promise.all([
       isScheduleOn('water'),
       isBoostOn('water')
     ]).then(function(results){
-      var status = (results[0] || results[1]) ? 'on' : 'off';
-      mqtt.publish('water/schedule', status);
+      var status = (results[0] || results[1]) ? '1' : '0';
+      if (status !== currentWaterState) {
+        mqtt.publish('hvac/boiler/water/control/set', status, {retain: true});
+        currentWaterState = status;
+      }
     });
   }
 };

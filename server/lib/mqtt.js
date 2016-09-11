@@ -26,8 +26,8 @@ exports.mqtt = function(config) {
       console.log(new Date().toLocaleString(), '- MQTT Client Offline ');
     });
 
-    client.on('error', function () {
-      console.log(new Date().toLocaleString(), '- MQTT Error');
+    client.on('error', function (err) {
+      console.warn(new Date().toLocaleString(), '- MQTT Error: ', err);
     });
   }
   return client;

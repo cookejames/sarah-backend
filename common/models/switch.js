@@ -3,12 +3,13 @@ module.exports = function(Switch) {
     description: 'Sends the on command to this switch',
     accepts: [
       {arg: 'req', type: 'object', 'http': {source: 'req'}},
-      {arg: 'id', type: 'string'}
+      {arg: 'id', type: 'string'},
+      {arg: 'options', type: 'object', injectCtx: true}
     ],
     returns: {arg: 'data', type: this.modelName, root: true},
     http: {verb: 'post', path: '/:id/on'}
   });
-  Switch.sendOn = function(req, id, cb) {
+  Switch.sendOn = function(req, id, options, cb) {
     Switch.findById(id, function(err, theSwitch) {
       if (err) {
         return cb(err);
@@ -26,12 +27,13 @@ module.exports = function(Switch) {
     description: 'Sends the off command to this switch',
     accepts: [
       {arg: 'req', type: 'object', 'http': {source: 'req'}},
-      {arg: 'id', type: 'string'}
+      {arg: 'id', type: 'string'},
+      {arg: 'options', type: 'object', injectCtx: true}
     ],
     returns: {arg: 'data', type: this.modelName, root: true},
     http: {verb: 'post', path: '/:id/off'}
   });
-  Switch.sendOff = function(req, id, cb) {
+  Switch.sendOff = function(req, id, options, cb) {
     Switch.findById(id, function(err, theSwitch) {
       if (err) {
         return cb(err);

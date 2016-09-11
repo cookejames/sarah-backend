@@ -15,7 +15,7 @@ module.exports = function(Boost) {
 
   Boost.observe('before save', function(ctx, next){
     if (ctx.isNewInstance) {
-      var accessToken = require('loopback').getCurrentContext().get('accessToken');
+      var accessToken = ctx.options.accessToken;
       ctx.instance.userId = accessToken ? accessToken.userId : null;
     }
     next();
@@ -25,14 +25,16 @@ module.exports = function(Boost) {
    */
   Boost.remoteMethod('status', {
     description: 'Get the boost status',
-    accepts: [],
+    accepts: [
+      {arg: 'options', type: 'object', injectCtx: true}
+    ],
     returns: [
       {arg: 'heating', type: 'number', root: true},
       {arg: 'water', type: 'number', root: true}
     ],
     http: {verb: 'get', path: '/status'}
   });
-  Boost.status = function(cb) {
+  Boost.status = function(options, cb) {
     this.find({
       where: {
         endTime: {gt: new Date().getTime()}
@@ -60,34 +62,38 @@ module.exports = function(Boost) {
   Boost.remoteMethod('boostWater', {
     description: 'Boost the water for a number of minutes',
     accepts: [
-      {arg: 'time', type: 'number'}
+      {arg: 'time', type: 'number'},
+      {arg: 'options', type: 'object', injectCtx: true}
     ],
     returns: {arg: 'data', type: this.modelName, root: true},
     http: {verb: 'post', path: '/water'}
   });
-  Boost.boostWater = function(data, cb) {
-    create(true, false, data, cb);
+  Boost.boostWater = function(data, options, cb) {
+    create(true, false, data, options, cb);
   };
 
   Boost.remoteMethod('boostHeating', {
     description: 'Boost the heating for a number of minutes',
     accepts: [
-      {arg: 'time', type: 'number'}
+      {arg: 'time', type: 'number'},
+      {arg: 'options', type: 'object', injectCtx: true}
     ],
     returns: {arg: 'data', type: this.modelName, root: true},
     http: {verb: 'post', path: '/heating'}
   });
-  Boost.boostHeating = function(data, cb) {
-    create(false, true, data, cb);
+  Boost.boostHeating = function(data, options, cb) {
+    create(false, true, data, options, cb);
   };
 
   Boost.remoteMethod('cancelHeating', {
     description: 'Cancel all current heating boosts',
-    accepts: [],
+    accepts: [
+      {arg: 'options', type: 'object', injectCtx: true}
+    ],
     returns: {arg: 'data', type: this.modelName, root: true},
     http: {verb: 'delete', path: '/heating/cancel'}
   });
-  Boost.cancelHeating = function(cb) {
+  Boost.cancelHeating = function(options, cb) {
     Boost.destroyAll({
       heating: true,
       endTime: {
@@ -98,11 +104,13 @@ module.exports = function(Boost) {
 
   Boost.remoteMethod('cancelWater', {
     description: 'Cancel all current water boosts',
-    accepts: [],
+    accepts: [
+      {arg: 'options', type: 'object', injectCtx: true}
+    ],
     returns: {arg: 'data', type: this.modelName, root: true},
     http: {verb: 'delete', path: '/water/cancel'}
   });
-  Boost.cancelWater = function(cb) {
+  Boost.cancelWater = function(options, cb) {
     Boost.destroyAll({
       water: true,
       endTime: {
@@ -111,7 +119,7 @@ module.exports = function(Boost) {
     }, cb);
   };
 
-  function create(water, heating, time, cb) {
+  function create(water, heating, time, options, cb) {
     time = parseInt(time);
     if (time === undefined || time < 0 || time > 180) {
       return cb({name: 'Invalid time', status: 400, message: 'Validation error'});
@@ -122,6 +130,6 @@ module.exports = function(Boost) {
       heating: (heating == true),
       startTime: currentTime,
       endTime: currentTime + (time * 60 * 1000)
-    }, cb);
+    }, options, cb);
   }
 };

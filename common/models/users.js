@@ -1,6 +1,6 @@
 module.exports = function(Users) {
   //login
-  Users.mosquittoLogin = function mosquitto(username, password, cb) {
+  Users.mosquittoLogin = function mosquitto(username, password, options, cb) {
     var hex24bit = new RegExp('[0-9a-f]{24}');
     if (hex24bit.test(username) && password.indexOf('Bearer ') === 0) {
       var token = password.slice(7);
@@ -38,14 +38,15 @@ module.exports = function(Users) {
       },
       accepts: [
         {arg: 'username', type: 'string'},
-        {arg: 'password', type: 'string'}
+        {arg: 'password', type: 'string'},
+        {arg: 'options', type: 'object', injectCtx: true}
       ],
       returns: {arg: 'data', type: 'AccessToken', root: true}
     }
   );
 
   //acl
-  Users.mosquittoAcl = function mosquitto(username, password, cb) {
+  Users.mosquittoAcl = function mosquitto(username, password, options, cb) {
     switch (username) {
       case 'anonymous':
           return cb({name: 'Not authorised', status: 403, message: 'Access not authorised'});
@@ -69,14 +70,15 @@ module.exports = function(Users) {
       },
       accepts: [
         {arg: 'username', type: 'string'},
-        {arg: 'password', type: 'string'}
+        {arg: 'password', type: 'string'},
+        {arg: 'options', type: 'object', injectCtx: true}
       ],
       returns: {arg: 'response', type: 'string'}
     }
   );
 
   //superuser
-  Users.mosquittoSuperuser = function mosquitto(username, password, cb) {
+  Users.mosquittoSuperuser = function mosquitto(username, password, options, cb) {
     cb({name: 'Not authorised', status: 403, message: 'Access not authorised'});
   };
   Users.remoteMethod(
@@ -88,7 +90,8 @@ module.exports = function(Users) {
       },
       accepts: [
         {arg: 'username', type: 'string'},
-        {arg: 'password', type: 'string'}
+        {arg: 'password', type: 'string'},
+        {arg: 'options', type: 'object', injectCtx: true}
       ],
       returns: {arg: 'response', type: 'string'}
     }
