@@ -18,7 +18,7 @@ module.exports = function(Switch) {
         return cb({name: 'Not Found', status: 404, message: 'Entity not found'});
       }
       var mqtt = require('../../server/lib/mqtt.js').mqtt(req.app.get('mqtt'));
-      mqtt.publish('switches', String(theSwitch.onCommand));
+      mqtt.publish('switches/commands', String(theSwitch.onCommand));
       cb();
     });
   };
@@ -42,7 +42,7 @@ module.exports = function(Switch) {
         return cb({name: 'Not Found', status: 404, message: 'Entity not found'});
       }
       var mqtt = require('../../server/lib/mqtt.js').mqtt(req.app.get('mqtt'));
-      mqtt.publish('switches', String(theSwitch.offCommand));
+      mqtt.publish('switches/commands', String(theSwitch.offCommand));
       cb();
     });
   };
