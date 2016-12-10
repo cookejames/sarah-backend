@@ -10,7 +10,7 @@ module.exports = function(server) {
 
   var topic = 'sensors/' + sensors.heatingId + '/readings';
   var mqtt = require('../lib/mqtt').mqtt(server.get('mqtt'));
-  mqtt.subscribe('heating/schedule');
+  mqtt.subscribe('hvav/boiler/heating/status');
   mqtt.on('message', messageReceived);
 
   /**
